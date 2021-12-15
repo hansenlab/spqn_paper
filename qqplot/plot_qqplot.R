@@ -3,13 +3,13 @@ library(WGCNA)
 library(ggplot2)
 library(ggridges)
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 
-dir_data="/users/ywang/10_25_2019/data/"
-dir_fig="/users/ywang/10_25_2019/qqplot_4pc_est/fig/"
+dir_data="/data/"
+dir_fig="/qqplot_4pc_est/fig/"
 
-dir_input=paste0("/users/ywang/10_25_2019/corplot_ori_svapcs/data/")
+dir_input=paste0("/corplot_ori_svapcs/data/")
 qqplot_density4<-function(cor_matrix,i,j,n,xlim_,ylim_){
   grp_loc=get_grp_loc(cor_matrix)
   cor_tmp=cor_matrix[grp_loc[[i]],grp_loc[[i]]]
