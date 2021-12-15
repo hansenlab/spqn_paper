@@ -1,154 +1,150 @@
 
 
-#library("sva")
-#library("recount", quietly = T)
-#library("WGCNA", quietly = T)
-# library(matrixStats)
-# library(matrixStats)
-# library(WGCNA)
-# library(ggplot2)
-# library(ggridges)
-# library(SummarizedExperiment)
-# library(readr)
-# 
-# source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-# source("/users/ywang/10_25_2019/functions/functions_2d_quantile_diagnal_only.R")
-# source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
-# 
-# source("/users/ywang/10_25_2019/WGCNA/code/functions/functions_construct_modules.R")
-# 
-# 
-# dir_data="/users/ywang/10_25_2019/data/" # counts
-# dir_input="/users/ywang/10_25_2019/corplot_ori_svapcs/data/" # cor_est 
-# dir_output="/users/ywang/10_25_2019/TF/data/"
-# dir_fig="/users/ywang/10_25_2019/TF/fig/"
-# 
-# names_TF=read.csv(paste0(dir_output,"Barrera_2016_Science_TableS2.csv"),header=T)
-# # > dim(names_TF)
-# # [1] 1254    2
-# # > ls(names_TF)
-# # [1] "Enseml.Gene.ID" "Gene.Symbol"  
-# 
-# list_threshold_ratio=c(1,c(1:10)*3)/1000
-# 
-# 
-# n_ori=n_est=list()
-# n_ori_overlap=n_est_overlap=list()
-# 
-# load(paste0(dir_output,"n_est_overlap.RData"))
-# load(paste0(dir_output,"n_ori_overlap.RData"))
-# load(paste0(dir_output,"n_ori.RData"))
-# load(paste0(dir_output,"n_est.RData"))
-# 
-# 
-# for(i in 1){
-# 
-#   n_ori[[i]]=n_est[[i]]=n_ori_overlap[[i]]=n_est_overlap[[i]]=array(dim=length(list_threshold_ratio))
-#   
-#   n_PC=4
-#   list_tissues=c("Adipose_Subcutaneous","Adrenal_Gland","Artery_Tibial","Brain_Cerebellum",
-#                  "Brain_Cortex", "Breast_Mammary","Colon_Transverse","Esophagus_Mucosa","Heart_Left_Ventricle")
-#   
-#   
-#   name_tissue=list_tissues[[i]]
-#   
-#   
-#   # load and input raw counts, normalize and filter low expression genes(average(log2cpm)>0)
-#   name_tissue=list_tissues[[i]]
-#   
-#   #load and input raw counts, normalize and filter low expression genes(average(log2cpm)>0)
-#   name_var= paste0("gtex.",name_tissue)
-#   load(paste0(dir_data, name_var,".rda" ))
-#   data_raw=eval(as.name(name_var))
-#   counts_raw=assay(data_raw)
-#   counts_raw=counts_raw[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA")),]
-#   list_filt=rpkm_filt(counts_raw,rowData(data_raw)$gene_length[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA"))])
-#   log2rpkm_kp=list_filt$counts_log2rpkm_keep
-#   
-#   
-#   gene_id_filt1=rownames(data_raw)[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA"))]
-#   gene_id_filt12=gene_id_filt1[list_filt$keep][order(rowMeans(log2rpkm_kp))]
-#   
-#   gene_id_filt12_2=strsplit(as.vector(gene_id_filt12),".",fixed=TRUE)
-#   gene_id_filt12_3=matrix(unlist(gene_id_filt12_2), ncol = 2, byrow = TRUE)
-#   gene_id_filt12_format=gene_id_filt12_3[,1]
-#   
-#   ###### get exp level of TF
-#   TF_select=which(gene_id_filt12_format %in% names_TF$"Enseml.Gene.ID")
-#   # length(TF_select)
-#   # [1] 755
-#   log2rpkm_kp_ordered=log2rpkm_kp[order(rowMeans(log2rpkm_kp)),]
-#   log2rpkm_TF=log2rpkm_kp_ordered[TF_select,]
-#   
-#   ave_log2RPKM=c(rowMeans(log2rpkm_TF),rowMeans(log2rpkm_kp_ordered))
-#   tissue=rep(name_tissue,nrow(log2rpkm_TF)+nrow(log2rpkm_kp_ordered))
-#   type=c(rep("TF",nrow(log2rpkm_TF)),rep('background',nrow(log2rpkm_kp_ordered)))
-#   
-#   # if(i==1){
-#   #   df_exp=data.frame(ave_log2RPKM=ave_log2RPKM,tissue=tissue,type=type)
-#   # }else{df_exp=rbind(df_exp,data.frame(ave_log2RPKM=ave_log2RPKM,tissue=tissue,type=type))}
-#   # 
-#   # ### get the number of TP of TF in ori and est - abs(cor)>threhold
-#   load(paste0(dir_output,"edges_ori_abs_others_",i,"th_tissue.RData"))#edges_ori_abs
-#   load(paste0(dir_output,"edges_est_abs_others_",i,"th_tissue.RData"))#edges_est_abs
-#   load(paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))#mat_PPI_TF_others_HURI
-# 
-#   nTF=length(TF_select)
-#   
-#   
-#   for(j in 1:length(edges_ori_abs)){
-#     edges_ori_abs[[j]]=edges_ori_abs[[j]][,c(TF_select,which(! 1:ncol(edges_ori_abs[[j]]) %in% TF_select))]
-#     edges_est_abs[[j]]=edges_est_abs[[j]][,c(TF_select,which(! 1:ncol(edges_est_abs[[j]]) %in% TF_select))]
-#     n_ori[[i]][j]=sum(edges_ori_abs[[j]][upper.tri(edges_ori_abs[[j]])])
-#     n_est[[i]][j]=sum(edges_est_abs[[j]][upper.tri(edges_est_abs[[j]])])
-#     print(j)
-#   }
-# 
-# 
-#   ###### compare with PPI - changes of true edges after spqn
-#   load(paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))#mat_PPI_TF_others_HURI
-#   load(paste0(dir_output,"edges_ori_abs_others_",i,"th_tissue.RData"))#edges_ori
-#   load(paste0(dir_output,"edges_est_abs_others_",i,"th_tissue.RData"))#edges_est_abs
-#   
-#   mat_PPI_TF_others_HURI=mat_PPI_TF_others_HURI[,c(TF_select,which(! 1:ncol(mat_PPI_TF_others_HURI) %in% TF_select))]
-#   
-#   for(j in 1:length(edges_ori_abs)){
-#     edges_ori_abs[[j]]=edges_ori_abs[[j]][,c(TF_select,which(! 1:ncol(edges_ori_abs[[j]]) %in% TF_select))]
-#     edges_est_abs[[j]]=edges_est_abs[[j]][,c(TF_select,which(! 1:ncol(edges_est_abs[[j]]) %in% TF_select))]
-#     
-#     a=mat_PPI_TF_others_HURI+edges_ori_abs[[j]]
-#     n_ori_overlap[[i]][j]=sum(a[upper.tri(a)]==2)
-#     
-#     b=mat_PPI_TF_others_HURI+edges_est_abs[[j]]
-#     n_est_overlap[[i]][j]=sum(b[upper.tri(b)]==2)
-#     print(j)
-#   }
-#   
-#  
-#   # a=a[,1:length(TF_select)]
-#   # sum(a[upper.tri(a)]==2)
-#   
-# }
-# 
-# # save(df_exp,file=paste0(dir_output,"df_exp.RData"))#edges_ori
-# 
-# # pdf(paste0(dir_fig,"TF_exp_box.pdf"))
-# # p<-ggplot(df_exp, aes(x=tissue, y=ave_log2RPKM, color=type)) +
-# #   geom_boxplot()
-# # print(p)
-# # dev.off()
-# 
-# save(n_est_overlap,file=paste0(dir_output,"n_est_overlap.RData"))#n_est_overlap
-# save(n_ori_overlap,file=paste0(dir_output,"n_ori_overlap.RData"))#n_ori_overlap
-# 
-# save(n_ori,file=paste0(dir_output,"n_ori.RData"))#n_ori
-# save(n_est,file=paste0(dir_output,"n_est.RData"))#n_est
-# 
+library(matrixStats)
+library(matrixStats)
+library(WGCNA)
+library(ggplot2)
+library(ggridges)
+library(SummarizedExperiment)
+library(readr)
 
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_diagnal_only.R")
+source("/functions/functions_evaluation_Aug_5.R")
+
+
+
+dir_data="/data/"
+dir_input="/corplot_ori_svapcs/data/" # cor_est
+dir_output="/TF/data/"
+dir_fig="/TF/fig/"
+
+names_TF=read.csv(paste0(dir_output,"Barrera_2016_Science_TableS2.csv"),header=T)
+# > dim(names_TF)
+# [1] 1254    2
+# > ls(names_TF)
+# [1] "Enseml.Gene.ID" "Gene.Symbol"
+
+list_threshold_ratio=c(1,c(1:10)*3)/1000
+
+
+n_ori=n_est=list()
+n_ori_overlap=n_est_overlap=list()
+
+load(paste0(dir_output,"n_est_overlap.RData"))
+load(paste0(dir_output,"n_ori_overlap.RData"))
+load(paste0(dir_output,"n_ori.RData"))
+load(paste0(dir_output,"n_est.RData"))
+
+i=1
+
+for(i in 1:9){
+  print(i)
+  
+  n_ori[[i]]=n_est[[i]]=n_ori_overlap[[i]]=n_est_overlap[[i]]=array(dim=length(list_threshold_ratio))
+  
+  n_PC=4
+  list_tissues=c("Adipose_Subcutaneous","Adrenal_Gland","Artery_Tibial","Brain_Cerebellum",
+                 "Brain_Cortex", "Breast_Mammary","Colon_Transverse","Esophagus_Mucosa","Heart_Left_Ventricle")
+  
+  
+  name_tissue=list_tissues[[i]]
+  
+  
+  # load and input raw counts, normalize and filter low expression genes(average(log2cpm)>0)
+  name_tissue=list_tissues[[i]]
+  
+  #load and input raw counts, normalize and filter low expression genes(average(log2cpm)>0)
+  name_var= paste0("gtex.",name_tissue)
+  load(paste0(dir_data, name_var,".rda" ))
+  data_raw=eval(as.name(name_var))
+  counts_raw=assay(data_raw)
+  counts_raw=counts_raw[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA")),]
+  list_filt=rpkm_filt(counts_raw,rowData(data_raw)$gene_length[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA"))])
+  log2rpkm_kp=list_filt$counts_log2rpkm_keep
+  
+  
+  gene_id_filt1=rownames(data_raw)[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA"))]
+  gene_id_filt12=gene_id_filt1[list_filt$keep][order(rowMeans(log2rpkm_kp))]
+  
+  gene_id_filt12_2=strsplit(as.vector(gene_id_filt12),".",fixed=TRUE)
+  gene_id_filt12_3=matrix(unlist(gene_id_filt12_2), ncol = 2, byrow = TRUE)
+  gene_id_filt12_format=gene_id_filt12_3[,1]
+  
+  ###### get exp level of TF
+  TF_select=which(gene_id_filt12_format %in% names_TF$"Enseml.Gene.ID")
+  # length(TF_select)
+  # [1] 755
+  log2rpkm_kp_ordered=log2rpkm_kp[order(rowMeans(log2rpkm_kp)),]
+  log2rpkm_TF=log2rpkm_kp_ordered[TF_select,]
+  
+  ave_log2RPKM=c(rowMeans(log2rpkm_TF),rowMeans(log2rpkm_kp_ordered))
+  tissue=rep(name_tissue,nrow(log2rpkm_TF)+nrow(log2rpkm_kp_ordered))
+  type=c(rep("TF",nrow(log2rpkm_TF)),rep('background',nrow(log2rpkm_kp_ordered)))
+  
+  # if(i==1){
+  #   df_exp=data.frame(ave_log2RPKM=ave_log2RPKM,tissue=tissue,type=type)
+  # }else{df_exp=rbind(df_exp,data.frame(ave_log2RPKM=ave_log2RPKM,tissue=tissue,type=type))}
+  #
+  # ### get the number of TP of TF in ori and est - abs(cor)>threhold
+  load(paste0(dir_output,"edges_ori_abs_others_",i,"th_tissue.RData"))#edges_ori_abs
+  load(paste0(dir_output,"edges_est_abs_others_",i,"th_tissue.RData"))#edges_est_abs
+  load(paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))#mat_PPI_TF_others_HURI
+  
+  nTF=length(TF_select)
+  
+  
+  for(j in 1:length(edges_ori_abs)){
+    edges_ori_abs[[j]]=edges_ori_abs[[j]][,c(TF_select,which(! 1:ncol(edges_ori_abs[[j]]) %in% TF_select))]
+    edges_est_abs[[j]]=edges_est_abs[[j]][,c(TF_select,which(! 1:ncol(edges_est_abs[[j]]) %in% TF_select))]
+    n_ori[[i]][j]=sum(edges_ori_abs[[j]][upper.tri(edges_ori_abs[[j]])])
+    n_est[[i]][j]=sum(edges_est_abs[[j]][upper.tri(edges_est_abs[[j]])])
+    print(j)
+  }
+  
+  
+  ###### compare with PPI - changes of true edges after spqn
+  load(paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))#mat_PPI_TF_others_HURI
+  load(paste0(dir_output,"edges_ori_abs_others_",i,"th_tissue.RData"))#edges_ori
+  load(paste0(dir_output,"edges_est_abs_others_",i,"th_tissue.RData"))#edges_est_abs
+  
+  mat_PPI_TF_others_HURI=mat_PPI_TF_others_HURI[,c(TF_select,which(! 1:ncol(mat_PPI_TF_others_HURI) %in% TF_select))]
+  
+  for(j in 1:length(edges_ori_abs)){
+    edges_ori_abs[[j]]=edges_ori_abs[[j]][,c(TF_select,which(! 1:ncol(edges_ori_abs[[j]]) %in% TF_select))]
+    edges_est_abs[[j]]=edges_est_abs[[j]][,c(TF_select,which(! 1:ncol(edges_est_abs[[j]]) %in% TF_select))]
+    
+    a=mat_PPI_TF_others_HURI+edges_ori_abs[[j]]
+    n_ori_overlap[[i]][j]=sum(a[upper.tri(a)]==2)
+    
+    b=mat_PPI_TF_others_HURI+edges_est_abs[[j]]
+    n_est_overlap[[i]][j]=sum(b[upper.tri(b)]==2)
+    print(j)
+  }
+  
+  
+  # a=a[,1:length(TF_select)]
+  # sum(a[upper.tri(a)]==2)
+  
+}
+
+# save(df_exp,file=paste0(dir_output,"df_exp.RData"))#edges_ori
+
+# pdf(paste0(dir_fig,"TF_exp_box.pdf"))
+# p<-ggplot(df_exp, aes(x=tissue, y=ave_log2RPKM, color=type)) +
+#   geom_boxplot()
+# print(p)
+# dev.off()
+
+save(n_est_overlap,file=paste0(dir_output,"n_est_overlap.RData"))#n_est_overlap
+save(n_ori_overlap,file=paste0(dir_output,"n_ori_overlap.RData"))#n_ori_overlap
+
+save(n_ori,file=paste0(dir_output,"n_ori.RData"))#n_ori
+save(n_est,file=paste0(dir_output,"n_est.RData"))#n_est
 
 
 ############ plots
-dir_data="/users/ywang/10_25_2019/data/" # counts
+dir_data="/dcl01/hansen/data/meanCoexp/"
 dir_input="/users/ywang/10_25_2019/corplot_ori_svapcs/data/" # cor_est 
 dir_output="/users/ywang/10_25_2019/TF/data/"
 dir_fig="/users/ywang/10_25_2019/TF/fig/"
@@ -163,7 +159,7 @@ list_tissues=c("Adipose_Subcutaneous","Adrenal_Gland","Artery_Tibial","Brain_Cer
 
 list_threshold_ratio=c(1,c(1:10)*3)/1000
 
-  
+
 for(i in 1:9){
   # n_est_overlap_tmp=n_est_overlap[[i]]
   # n_ori_overlap_tmp=n_ori_overlap[[i]]
@@ -301,54 +297,3 @@ ggplot(df_all2, aes(x=signal_percent, y=log(nedge+1))) +
   geom_boxplot(position=position_dodge(0.8), aes(col=type))+
   geom_jitter(position=position_dodge(0.8),aes(col=tissue))
 dev.off()
-
-# 
-# nedges_estimated=c(n_1_ori,n_1_est)
-# type=c(rep("before SpQN",9),rep("after SpQN",9))
-# tissue=c(list_tissues,list_tissues)
-# df=data.frame(nedges_estimated=nedges_estimated,type=type,tissue=tissue)
-# df$type=factor(df$type,levels=c("before SpQN","after SpQN"))
-# p <- ggplot(data=df, aes(x=tissue, y=nedges_estimated, fill=type)) +
-#   geom_bar(stat="identity", color="black", position=position_dodge())+
-#   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
-# pdf(paste0(dir_fig,"TF_others_nedges_estimated_1percent.pdf"))
-# print(p)
-# dev.off()
-# 
-# 
-# nedges_estimated=c(n_01_ori,n_01_est)
-# type=c(rep("before SpQN",9),rep("after SpQN",9))
-# tissue=c(list_tissues,list_tissues)
-# df=data.frame(nedges_estimated=nedges_estimated,type=type,tissue=tissue)
-# df$type=factor(df$type,levels=c("before SpQN","after SpQN"))
-# p <- ggplot(data=df, aes(x=tissue, y=nedges_estimated, fill=type)) +
-#   geom_bar(stat="identity", color="black", position=position_dodge())+
-#   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
-# pdf(paste0(dir_fig,"TF_others_nedges_estimated_01percent.pdf"))
-# print(p)
-# dev.off()
-# 
-# 
-# nedges_estimated=c(n_01_ori_overlap,n_01_est_overlap)
-# type=c(rep("before SpQN",9),rep("after SpQN",9))
-# tissue=c(list_tissues,list_tissues)
-# df=data.frame(nedges_estimated=nedges_estimated,type=type,tissue=tissue)
-# df$type=factor(df$type,levels=c("before SpQN","after SpQN"))
-# p <- ggplot(data=df, aes(x=tissue, y=nedges_estimated, fill=type)) +
-#   geom_bar(stat="identity", color="black", position=position_dodge())+
-#   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
-# pdf(paste0(dir_fig,"TF_others_nedges_estimated_01percent_overlap.pdf"))
-# print(p)
-# dev.off()
-# 
-# nedges_estimated=c(n_1_ori_overlap,n_1_est_overlap)
-# type=c(rep("before SpQN",9),rep("after SpQN",9))
-# tissue=c(list_tissues,list_tissues)
-# df=data.frame(nedges_estimated=nedges_estimated,type=type,tissue=tissue)
-# df$type=factor(df$type,levels=c("before SpQN","after SpQN"))
-# p <- ggplot(data=df, aes(x=tissue, y=nedges_estimated, fill=type)) +
-#   geom_bar(stat="identity", color="black", position=position_dodge())+
-#   theme_minimal()+theme(axis.text.x = element_text(angle = 45))
-# pdf(paste0(dir_fig,"TF_others_nedges_estimated_1percent_overlap.pdf"))
-# print(p)
-# dev.off()
