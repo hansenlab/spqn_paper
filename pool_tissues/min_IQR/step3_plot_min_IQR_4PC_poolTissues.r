@@ -1,8 +1,6 @@
 
 
-# dir_fig="/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig/"
-# dir.create(dir_fig)
-dir_output="/users/ywang/July_28_2020/pool_tissues/output_4pc/"
+dir_output="/pool_tissues/output_4pc/"
 dir_fig=dir_output
 dir_input=dir_output
 
