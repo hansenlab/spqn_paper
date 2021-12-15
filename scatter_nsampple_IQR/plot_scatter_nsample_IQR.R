@@ -1,6 +1,6 @@
 
-dir_input="/users/ywang/10_25_2019/scatter_nsampple_IQR/data/"
-dir_fig="/users/ywang/10_25_2019/scatter_nsampple_IQR/fig/"
+dir_input="=/scatter_nsampple_IQR/data/"
+dir_fig="/scatter_nsampple_IQR/fig/"
 dir.create(dir_fig)
 
 load(paste0(dir_input,"list_nsample.RData"))
