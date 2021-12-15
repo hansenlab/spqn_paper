@@ -1,11 +1,11 @@
 library(matrixStats)
 library(WGCNA)
 library(SummarizedExperiment)
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
-dir_data="/users/ywang/10_25_2019/data/"
-dir_input="/users/ywang/10_25_2019/corplot_ori_svapcs/data/"
-dir_output="/users/ywang/10_25_2019/exp_signal_4PC/data/"
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
+dir_data="/data/"
+dir_input="/corplot_ori_svapcs/data/"
+dir_output="/exp_signal_4PC/data/"
   
   
 list_tissues=c("Adipose_Subcutaneous","Adrenal_Gland","Artery_Tibial","Brain_Cerebellum",
