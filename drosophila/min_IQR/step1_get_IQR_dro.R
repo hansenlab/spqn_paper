@@ -3,20 +3,18 @@ library(DESeq)
 library(edgeR)
 library(WGCNA)
 
-# root="/Users/yiwang/Dropbox/project_Kasper/2_18_2019/"
-dir_output="/Users/yiwang/Dropbox/project_Kasper/ongoing/July_28_2020/drosophila/out/"
+dir_output="/drosophila/out/"
 
 ######### drosophila, large biological variance
 #30 whole-animal biological samples. We discarded the larval, pupal and adult stages and kept only the 12 embryonic samples
 # data downloaded from: https://github.com/TheCodingCollective/clusterFux/blob/master/data/modencodefly_pooledreps_count_table.txt
-droso_counts_ <- read.table("/Users/yiwang/Dropbox/project_Kasper/July_28_2020/drosophila/data//modencodefly_pooledreps_count_table.txt",header=TRUE)
+droso_counts_ <- read.table("/data//modencodefly_pooledreps_count_table.txt",header=TRUE)
 
 droso_counts=droso_counts_[,-1]
 
 head(droso_counts)
 
-# counts_raw=counts_raw[which(rowData(data_raw)$gene_type %in% c("protein_coding", "lincRNA")),]
-source('/Users/yiwang/Dropbox/project_Kasper/ongoing/10_25_2019/cluster/functions/functions_2d_quantile_no_surf_July_18.R')
+source('/functions/functions_2d_quantile_no_surf_July_18.R')
 list_filt=rpkm_filt(droso_counts,rep(1000,nrow(droso_counts)))
 
 log2rpkm_kp=list_filt$counts_log2rpkm_keep
