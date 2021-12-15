@@ -1,13 +1,13 @@
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 library(matrixStats)
 #library(WGCNA)
 library(ggplot2)
 library(ggridges)
 
 
-dir_input="/users/ywang/10_25_2019/ridge_signal_0pc_ori/data/"
-dir_fig="/users/ywang/10_25_2019/ridge_signal_0pc_ori/fig/"
+dir_input="/ridge_signal_0pc_ori/data/"
+dir_fig="/ridge_signal_0pc_ori/fig/"
 
 
 maxy_0PC_ori_back=maxy_4PC_ori_back=maxy_svaPC_ori_back=maxy_4PC_est_back=maxy_svaPC_est_back=c()
