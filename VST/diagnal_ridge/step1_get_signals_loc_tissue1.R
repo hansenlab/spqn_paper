@@ -5,19 +5,14 @@ library(matrixStats)
 library(WGCNA)
 library(spqn)
 library(SummarizedExperiment)
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
 
-source("/users/ywang/July_28_2020/functions/plot_signal_condition_exp.R")
+source("/functions/plot_signal_condition_exp.R")
 
-# source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
 
-# dir_data="/users/ywang/10_25_2019/data/"
-dir_data="/dcl01/hansen/data/meanCoexp/"
-# dir_input="/users/ywang/July_28_2020/regulatome/output/"
-dir_output="/users/ywang/July_28_2020/VST/output_4pc/"
+dir_data="/data/"
+dir_output="/VST/output_4pc/"
 setwd(dir_output)
-# dir.create(dir_output)
-# load(paste0(dir_output,"TF_data_unique_en_filt.RData")) #TF_data_unique_en_filt
 
 
 summarizeDensity2 <- function(df, maxy,group = "background", miny = 0.01) {
