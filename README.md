@@ -50,6 +50,8 @@ exp_signal: visualize the weighted distribution of expressions of genes, with th
 ### Examine the expression bias in 'true' co-expression network 
 PPI: visualize the weighted distribution of expressions of genes, with the weight decided by the number of interacting proteins of the corresponding protein, according to PPI database 
 
+bias_regulatome: visualize the weighted distribution of expressions of genes, with the weight decided by the number of interacting proteins of the corresponding protein, according to regulatome database 
+
 ### Functions
 functions: functions used in the visualization, batch effect removal and correlation matrix adjustment
 
