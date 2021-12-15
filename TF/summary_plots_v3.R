@@ -1,12 +1,4 @@
 
-# 
-# 1.extract the TF data
-# 2.find one tissue - 1hr
-# extract correlations of adj and ori
-# Extract trank of adj and ori  - on cluster
-# Scatter plot for ranks before/after spqn  - on cluster
-
-
 
 #library("sva")
 #library("recount", quietly = T)
