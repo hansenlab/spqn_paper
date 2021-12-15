@@ -50,12 +50,13 @@ exp_signal: visualize the weighted distribution of expressions of genes, with th
 
 graphical_lasso: visualize the expression bias on co-expression network constricted by graphical lasso
 
-TP_Partition: visualize the expression bias on true positives on the estimated co-expression signals, , where co-expression signals are decided by setting a threshold on the absolute correlation, and the gene pairs corresponding to the interacting protein pairs in PPI were used as ground truth
-
 ### Examine the expression bias in 'true' co-expression network 
 PPI: visualize the weighted distribution of expressions of genes, with the weight decided by the number of interacting proteins of the corresponding protein, according to PPI database 
 
 bias_regulatome: visualize the weighted distribution of expressions of genes, with the weight decided by the number of interacting proteins of the corresponding protein, according to regulatome database 
+
+### Evaluation of SpQN
+TP_Partition: compare the true positive of co-expression estimation before and after applying SpQN, conditional on the gene expression level, where co-expression signals are decided by setting a threshold on the absolute correlation, and the gene pairs corresponding to the interacting protein pairs in PPI were used as ground truth
 
 
 ### Functions
