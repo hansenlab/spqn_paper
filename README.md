@@ -23,10 +23,12 @@ The original HuRI protein-protein interaction data was downloaded from: http://w
 
 
 ### Regulatome
-The original regulatome data was curated using the code from https://github.com/leekgroup/networks_correction/blob/master/shellscripts/get_true_positive.sh.
+The original regulatome data was curated using the code from: https://github.com/leekgroup/networks_correction/blob/master/shellscripts/get_true_positive.sh.
 
 The curated data is available at XXX.
 
+### TF gene list
+The transcription factor gene list was downloaded from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4825693/bin/NIHMS772895-supplement-Table_S2.xlsx
 
 ## Script
 
