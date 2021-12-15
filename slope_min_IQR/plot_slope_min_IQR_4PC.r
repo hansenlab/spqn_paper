@@ -1,9 +1,9 @@
 library(matrixStats)
 
-dir_data="/users/ywang/10_25_2019/data/"
+dir_data="/data/"
 
-dir_input="/users/ywang/10_25_2019/slope_min_QIR/data/"
-dir_output="/users/ywang/10_25_2019/slope_min_QIR/data/"
+dir_input="/slope_min_QIR/data/"
+dir_output="/slope_min_QIR/data/"
 
 get_slope_min_IQR<-function(list_input){
   IQR_grp=list_input$IQR_cor_mat_m
