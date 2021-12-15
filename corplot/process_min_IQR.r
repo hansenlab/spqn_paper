@@ -1,5 +1,5 @@
-dir_input="/users/ywang/10_25_2019/boxplot_9tissues/data/"
-dir_output="/users/ywang/10_25_2019/corplot_adj_4_svapcs/data/"
+dir_input="/boxplot_9tissues/data/"
+dir_output="/corplot_adj_4_svapcs/data/"
 
 load(paste0(dir_input,"list_IQR_est_",30,"_PCs_",1,"th_tissue.RData"))
 load(paste0(dir_input,"list_IQR_ori_",30,"_PCs_",1,"th_tissue.RData"))
