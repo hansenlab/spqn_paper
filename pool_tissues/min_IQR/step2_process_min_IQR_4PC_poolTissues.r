@@ -1,10 +1,8 @@
-# dir_input="/users/ywang/10_25_2019/boxplot_9tissues/data/"
 
-dir_output="/users/ywang/July_28_2020/pool_tissues/output_4pc/"
+dir_output="/pool_tissues/output_4pc/"
 setwd(dir_output)
 dir_input=dir_output
 
-# load(paste0(dir_input,"list_IQR_est_",4,"_PCs_vst_",1,"th_tissue.RData"))
 i=1
 for(i in 1:3){
   
