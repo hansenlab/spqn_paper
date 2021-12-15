@@ -1,11 +1,11 @@
 library(ggplot2)
 
 
-dir_input="/users/ywang/10_25_2019/boxplot_9tissues/data/"
-dir_fig="/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig/"
+dir_input="/boxplot_9tissues/data/"
+dir_fig="/corplot_adj_4_svapcs/fig/"
 
 i=1
-load(paste0("/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig/","nsv_",i,"_th_tissue.RData"))
+load(paste0("/corplot_adj_4_svapcs/fig/","nsv_",i,"_th_tissue.RData"))
 n_PC=nsv
 
 load(paste0(dir_input,"list_IQR_ori_",n_PC,"_PCs_",i,"th_tissue.RData"))
