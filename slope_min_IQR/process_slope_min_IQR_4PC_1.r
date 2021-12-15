@@ -2,13 +2,13 @@ library(matrixStats)
 library(WGCNA)
 library(SummarizedExperiment)
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 
-dir_data="/users/ywang/10_25_2019/data/"
+dir_data="/data/"
 
-dir_input="/users/ywang/10_25_2019/slope_min_QIR/data/"
-dir_output="/users/ywang/10_25_2019/slope_min_QIR/data/"
+dir_input="/slope_min_QIR/data/"
+dir_output="/slope_min_QIR/data/"
 
 i=1
 
