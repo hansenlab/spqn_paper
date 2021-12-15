@@ -69,3 +69,5 @@ VST: examine the mean-correlation relationship after applying VST on the express
 
 combat: examine the mean-correlation relationship after applying combat on the expression data
 
+pool_tissues: examine the mean-correlation relationship for the GTEx data concatinating the expression data of three tissues
+
