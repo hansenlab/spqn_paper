@@ -10,10 +10,10 @@ library(SummarizedExperiment)
 source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
 
 dir_data="/users/ywang/10_25_2019/data/"
-dir_output="/users/ywang/July_28_2020/graphical_lasso_morepoints/output_4pc/"
+dir_output="/users/ywang/July_28_2020/graphical_lasso_morepoints/output_27pc/"
 # dir_output="/users/ywang/July_28_2020/graphical_lasso/output_27pc/"
 
-dir_fig="/users/ywang/July_28_2020/graphical_lasso_morepoints/fig_4PC/"
+dir_fig="/users/ywang/July_28_2020/graphical_lasso_morepoints/fig_27PC/"
 dir.create(dir_fig)
 
 lambda = c(5:20)/100*4
@@ -23,10 +23,13 @@ lambda = c(5:20)/100*4
 
 
 list_file=list.files(dir_output)
+#for i==6:
+# setwd("/users/ywang/July_28_2020/graphical_lasso/output_27pc/")
+dir_output2="/users/ywang/July_28_2020/graphical_lasso/output_27pc/"
 
-for(i in  3){
-  n_PC=4
-
+for(i in  6){
+  n_PC=27
+  
   list_tissues=c("Adipose_Subcutaneous","Adrenal_Gland","Artery_Tibial","Brain_Cerebellum",
                  "Brain_Cortex", "Breast_Mammary","Colon_Transverse","Esophagus_Mucosa","Heart_Left_Ventricle")
   
@@ -42,9 +45,9 @@ for(i in  3){
   
   set.seed(111)
   kep=sample(1:nrow(log2rpkm_kp),4000)
-
+  
   log2rpkm_kp=log2rpkm_kp[kep,]
-
+  
   
   d_ori=d_adj=list()
   nedge_adj=nedge_ori=mean_adj=mean_ori=mean_background=array(dim=length(lambda))
@@ -54,9 +57,9 @@ for(i in  3){
     if(paste0("thisnet_ori_",i,"th_tissue_",j,"_4000genes.RData") %in% list_file){
       # save(thisnet,file=paste0(dir_output,"thisnet_adj_",i,"th_tissue_",j,"_4000genes.RData"))
       
-      load(paste0(dir_output,"thisnet_ori_",i,"th_tissue_",j,"_4000genes.RData")) #thisnet,ori
+      load(paste0(dir_output2,"thisnet_ori_",i,"th_tissue_",j,"_4000genes.RData")) #thisnet,ori
       thisnet_ori=thisnet
-      load(paste0(dir_output,"thisnet_adj_",i,"th_tissue_",j,"_4000genes.RData")) #thisnet,adj
+      load(paste0(dir_output2,"thisnet_adj_",i,"th_tissue_",j,"_4000genes.RData")) #thisnet,adj
       thisnet_adj=thisnet
       
       
@@ -79,12 +82,12 @@ for(i in  3){
       }
     }
     
-
+    
     # 
     if(sum(w_adj)>0){
-    w_adj=w_adj/sum(w_adj)
-    d_adj[[j]]=density(rowMeans(log2rpkm_kp),weights = w_adj)
-    mean_adj[j]=weighted.mean(rowMeans(log2rpkm_kp),w = w_adj)
+      w_adj=w_adj/sum(w_adj)
+      d_adj[[j]]=density(rowMeans(log2rpkm_kp),weights = w_adj)
+      mean_adj[j]=weighted.mean(rowMeans(log2rpkm_kp),w = w_adj)
     }
     
     print(j)
@@ -115,7 +118,7 @@ for(i in  3){
       legend("topright",legend=c("background","signal"),col=c("black","blue"),lty=1,cex=1.5)
       dev.off()
     }
-
+    
     
     if(j <= length(d_adj)){
       pdf(paste0(dir_fig,"/d_adj_",j,"_",i,"th_tissue.pdf"))
@@ -130,10 +133,10 @@ for(i in  3){
       legend("topright",legend=c("background","signal"),col=c("black","blue"),lty=1,cex=1.5)
       dev.off()
     }
-
+    
     
   }
-
+  
 }
 
 
