@@ -1,16 +1,6 @@
 
-# 
-# 1.extract the TF data
-# 2.find one tissue - 1hr
-# extract correlations of adj and ori
-# Extract trank of adj and ori  - on cluster
-# Scatter plot for ranks before/after spqn  - on cluster
 
 
-
-#library("sva")
-#library("recount", quietly = T)
-#library("WGCNA", quietly = T)
 library(matrixStats)
 library(matrixStats)
 library(WGCNA)
@@ -19,17 +9,15 @@ library(ggridges)
 library(SummarizedExperiment)
 library(readr)
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_diagnal_only.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
-
-source("/users/ywang/10_25_2019/WGCNA/code/functions/functions_construct_modules.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_diagnal_only.R")
+source("/functions/functions_evaluation_Aug_5.R")
 
 
-dir_data="/users/ywang/10_25_2019/data/" # counts
-dir_input="/users/ywang/10_25_2019/corplot_ori_svapcs/data/" # cor_est 
-dir_output="/users/ywang/10_25_2019/TF/data/"
-dir_fig="/users/ywang/10_25_2019/TF/fig/"
+dir_data="/data/" # counts
+dir_input="/corplot_ori_svapcs/data/" # cor_est 
+dir_output="/TF/data/"
+dir_fig="/TF/fig/"
 
 names_TF=read.csv(paste0(dir_output,"Barrera_2016_Science_TableS2.csv"),header=T)
 # > dim(names_TF)
@@ -185,55 +173,3 @@ for(j in 1:length(list_threshold_ratio)){
 save(edges_ori_abs,file=paste0(dir_output,"edges_ori_abs_others_",i,"th_tissue.RData"))
 save(edges_est_abs,file=paste0(dir_output,"edges_est_abs_others_",i,"th_tissue.RData"))
 
-
-###### compare with PPI - changes of true edges after spqn
-### extract a subset of PPI matrix that contains filtered TFs
-# 
-# dir_output2="/users/ywang/10_25_2019/WGCNA/data/"
-# load(paste0(dir_output2,"mat_PPI_HURI.RData")) #mat_PPI_HURI
-# TF_select=which(gene_id_filt12_format %in% names_TF$"Enseml.Gene.ID")
-# mat_PPI_TF_others_HURI = transfer_ppi(mat_PPI_HURI,gene_id_filt12_format)[TF_select,]
-# save(mat_PPI_TF_others_HURI,file=paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))
-# _",i,"th_tissue
-
-# ### get the number of TP of TF in ori and est - cor>threhold
-# load(paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))#mat_PPI_TF_others_HURI
-# load(paste0(dir_output,"edges_ori_others_",i,"th_tissue.RData"))#edges_ori
-# load(paste0(dir_output,"edges_est_others_",i,"th_tissue.RData"))#edges_est
-
-# > a=mat_PPI_TF_others_HURI+edges_ori[[1]]
-# > sum(a==2)-sum(diag(mat_PPI_TF_others_HURI+edges_ori[[1]])==2)
-# [1] 24
-# > 
-#   > b=mat_PPI_TF_others_HURI+edges_est[[1]]
-# > sum(b==2)-sum(diag(mat_PPI_TF_others_HURI+edges_est[[1]])==2)
-# [1] 30
-# > 
-#   > a=mat_PPI_TF_others_HURI+edges_ori[[2]]
-# > sum(a==2)-sum(diag(mat_PPI_TF_others_HURI+edges_ori[[2]])==2)
-# 
-# [1] 66
-# > b=mat_PPI_TF_others_HURI+edges_est[[2]]
-# > sum(b==2)-sum(diag(mat_PPI_TF_others_HURI+edges_est[[2]])==2)
-# [1] 131
-# # sum(mat_PPI_TF_others_HURI)
-# 3957
-
-
-# ### get the number of TP of TF in ori and est - abs(cor)>threhold
-# load(paste0(dir_output,"mat_PPI_TF_others_HURI_",i,"th_tissue.RData"))#mat_PPI_TF_others_HURI
-# load(paste0(dir_output,"edges_ori_abs_others_",i,"th_tissue.RData"))#edges_ori
-# load(paste0(dir_output,"edges_est_abs_others_",i,"th_tissue.RData"))#edges_est
-
-# 
-# > sum(a==2)-sum(diag(mat_PPI_TF_others_HURI+edges_ori[[1]])==2)
-# [1] 24
-# > b=mat_PPI_TF_others_HURI+edges_est[[1]]
-# > sum(b==2)-sum(diag(mat_PPI_TF_others_HURI+edges_est[[1]])==2)
-# [1] 30
-# > a=mat_PPI_TF_others_HURI+edges_ori[[2]]
-# > sum(a==2)-sum(diag(mat_PPI_TF_others_HURI+edges_ori[[2]])==2)
-# [1] 66
-# > b=mat_PPI_TF_others_HURI+edges_est[[2]]
-# > sum(b==2)-sum(diag(mat_PPI_TF_others_HURI+edges_est[[2]])==2)
-# [1] 131
