@@ -7,17 +7,15 @@ library(ggplot2)
 library(ggridges)
 library(SummarizedExperiment)
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
 
-dir_data="/dcl01/hansen/data/meanCoexp/"
-# dir_input="/users/ywang/July_28_2020/regulatome/output/"
-dir_output="/users/ywang/July_28_2020/combat/min_IQR/"
+dir_data="/data/"
+dir_output="/combat/min_IQR/"
 dir.create(dir_output)
 setwd(dir_output)
-# load(paste0(dir_output,"TF_data_unique_en_filt.RData")) #TF_data_unique_en_filt
 
 i=1
 
