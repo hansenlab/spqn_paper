@@ -6,7 +6,7 @@
 
 The original data was downloaded from GTEx portal: https://gtexportal.org/home/datasets
 
-The processed data is available at XXX
+The processed data is available at XXX.
 
 ### Drosophila bulk RNA-seq
 
@@ -23,7 +23,9 @@ The original HuRI protein-protein interaction data was downloaded from: http://w
 
 
 ### Regulatome
-The original regulatome data was downloaded from 
+The original regulatome data was curated using the code from https://github.com/leekgroup/networks_correction/blob/master/shellscripts/get_true_positive.sh.
+
+The curated data is available at XXX.
 
 ## Script
 
