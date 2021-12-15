@@ -45,11 +45,11 @@ qqplot: Q-Q plot showing the distribution difference of correlations between dif
 scRNA: ridgeplot of scRNA-seq example data
 
 ### Visualize the bias in co-expression analysis before and after adjusting the correlation matrix
-exp_signal
+exp_signal: visualize the weighted distribution of expressions of genes, with the weight decided by the number of estimated co-expression partners
 
 
 ### Examing the expression bias in 'true' co-expression network 
-PPI
+PPI: visualize the weighted distribution of expressions of genes, with the weight decided by the number of interacting proteins of the corresponding protein, according to PPI database 
 
 ###
 functions
