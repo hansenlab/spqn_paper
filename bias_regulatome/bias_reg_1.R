@@ -5,19 +5,15 @@ library(matrixStats)
 library(WGCNA)
 library(spqn)
 library(SummarizedExperiment)
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
 
-dir_data="/users/ywang/10_25_2019/data/"
-dir_input="/users/ywang/July_28_2020/regulatome/output/"
-dir_output="/users/ywang/July_28_2020/bias_regulatome/output/"
-# dir.create(dir_output)
+dir_data="/data/"
+dir_input="/regulatome/output/"
+dir_output="/bias_regulatome/output/"
 
-# load(paste0(dir_output,"TF_data_unique_en_filt.RData")) #TF_data_unique_en_filt
-
-load(paste0(dir_input,"mat_reg_filt.RData")) #mat_reg_filt
+load(paste0(dir_input,"mat_reg_filt.RData")) 
 diag(mat_reg_filt)=0
 mat_reg_filt[lower.tri(mat_reg_filt)]=0
-# mat_reg_filt[is.na(mat_TF_reg)]=0
 
 n_PC=4
 ########### for each tissue, format the data 
