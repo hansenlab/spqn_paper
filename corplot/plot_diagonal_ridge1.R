@@ -4,13 +4,13 @@ library(ggplot2)
 library(ggridges)
 library(SummarizedExperiment)
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
-dir_data="/users/ywang/10_25_2019/data/"
-dir_fig="/users/ywang/10_25_2019/corplot_ori_0pc/"
-dir_fig="/users/ywang/10_25_2019/corplot_ori_0pc/diagonal_adj_ridge4/"
-dir_fig="/users/ywang/10_25_2019/corplot_ori_0pc/diagonal_adj_ridge4/fig/"
-dir_input="/users/ywang/10_25_2019/corplot_ori_svapcs/data/"
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
+dir_data="/data/"
+dir_fig="/corplot_ori_0pc/"
+dir_fig="/corplot_ori_0pc/diagonal_adj_ridge4/"
+dir_fig="/corplot_ori_0pc/diagonal_adj_ridge4/fig/"
+dir_input="/corplot_ori_svapcs/data/"
 
 
 plot_diagonal_ridge<-function(cor_matrix,ngrp=10){
