@@ -34,9 +34,9 @@ cor_est
 
 ### Visualize the mean-correlation relationship
 
-corplot
-
 signal_ridge: ridgeplot showing the distribution of correlations for genes across different expression levels of GTEx data
+
+corplot: boxplot for the relationship of IQR of correlations and expression levels
 
 slope_min_IQR: scatter plot showing the relationship between the IQR of correlation and the expression level of GTEx data
 
