@@ -16,6 +16,7 @@ The original  metadata was downloaded from: http://bowtie-bio.sourceforge.net/re
 
 ### scRNA-seq
 
+The original count data was downloaded from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE45719
 
 ### PPI
 
