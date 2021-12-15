@@ -67,5 +67,5 @@ drosophila: explore the mean-correlation relationship of drosophola developmenta
 
 VST: examine the mean-correlation relationship after applying VST on the expression data
 
-VST: examine the mean-correlation relationship after applying combat on the expression data
+combat: examine the mean-correlation relationship after applying combat on the expression data
 
