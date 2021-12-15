@@ -2,15 +2,24 @@
 
 ## Data
 
-GTeX
+### GTEx: 
 
-Drosophila bulk RNA-seq
+The original data was downloaded from GTEx portal: https://gtexportal.org/home/datasets
 
-scRNA-seq
+The processed data is available at XXX
 
-PPI
+### Drosophila bulk RNA-seq
 
-Regulatome
+The original count data was downloaded from: http://bowtie-bio.sourceforge.net/recount/pooled/modencodefly_pooledreps_count_table.txt
+
+The original  metadata was downloaded from: http://bowtie-bio.sourceforge.net/recount/pooled/modencodefly_pooled_phenodata.txt
+
+### scRNA-seq
+
+
+### PPI
+
+### Regulatome
 
 
 ## Script
