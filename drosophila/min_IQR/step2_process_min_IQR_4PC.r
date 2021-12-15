@@ -1,6 +1,5 @@
-# dir_input="/users/ywang/10_25_2019/boxplot_9tissues/data/"
 
-dir_output="/Users/yiwang/Dropbox/project_Kasper/ongoing/July_28_2020/drosophila/out/"
+dir_output="/drosophila/out/"
 setwd(dir_output)
 dir_input=dir_output
 
