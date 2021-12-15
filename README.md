@@ -29,24 +29,36 @@ The curated data is available at XXX.
 
 ## Script
 
+### Adjust correlation matrix
 cor_est
 
+### Visualize the mean-correlation relationship
+
 corplot
-
-exp_signal
-
-functions
-
-PPI
-
-qqplot
-
-scatter_nsampple_IQR
-
-scRNA
 
 signal_ridge
 
 slope_min_IQR
+
+qqplot
+
+scRNA
+
+### Visualize the bias in co-expression analysis before and after adjusting the correlation matrix
+exp_signal
+
+
+### Examing the expression bias in 'true' co-expression network 
+PPI
+
+###
+functions
+scatter_nsampple_IQR
+
+
+
+
+
+
 
 TF
