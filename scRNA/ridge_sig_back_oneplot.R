@@ -1,15 +1,15 @@
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 library(matrixStats)
 library(WGCNA)
 library(SummarizedExperiment)
 library(ggplot2)
 library(ggridges)
 
-dir_data=paste0("/users/ywang/10_25_2019/scRNA/data/GSE45719_RAW/")
-dir_input = paste0("/users/ywang/10_25_2019/scRNA/data/")
-dir_output="/users/ywang/10_25_2019/scRNA/data/"
-dir_fig="/users/ywang/10_25_2019/scRNA/fig/"
+dir_data=paste0("/scRNA/data/GSE45719_RAW/")
+dir_input = paste0("/scRNA/data/")
+dir_output="/scRNA/data/"
+dir_fig="/scRNA/fig/"
 
 
 
