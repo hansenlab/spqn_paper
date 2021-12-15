@@ -19,9 +19,11 @@ The original  metadata was downloaded from: http://bowtie-bio.sourceforge.net/re
 The original count data was downloaded from GEO: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE45719
 
 ### PPI
+The original HuRI protein-protein interaction data was downloaded from: http://www.interactome-atlas.org/data/HuRI.tsv
+
 
 ### Regulatome
-
+The original regulatome data was downloaded from 
 
 ## Script
 
