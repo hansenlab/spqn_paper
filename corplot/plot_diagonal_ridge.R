@@ -4,15 +4,15 @@ library(ggplot2)
 library(ggridges)
 library(SummarizedExperiment)
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 
-dir_data="/users/ywang/10_25_2019/data/"
-dir_output="/users/ywang/10_25_2019/output/"
+dir_data="/data/"
+dir_output="/output/"
 dir.create(dir_output)
-dir_fig = paste0("/users/ywang/10_25_2019/corplot_adj_4_svapcs/")
+dir_fig = paste0("/corplot_adj_4_svapcs/")
 dir.create(dir_fig)
-dir_fig = paste0("/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig/")
+dir_fig = paste0("/corplot_adj_4_svapcs/fig/")
 dir.create(dir_fig)
 
 
