@@ -1,6 +1,5 @@
-dir_input="/users/ywang/10_25_2019/exp_signal_4PC/data/"
-#dir_output="/users/ywang/10_25_2019/exp_signal_4PC/data/"
-dir_fig="/users/ywang/10_25_2019/exp_signal_4PC/fig/"
+dir_input="/exp_signal_4PC/data/"
+dir_fig="/exp_signal_4PC/fig/"
 dir.create(dir_fig)
 library(scales)
 
