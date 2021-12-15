@@ -1,8 +1,7 @@
 
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
 
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
-#library(Rfast)#Sort/Rank
+source("/functions/functions_evaluation_Aug_5.R")
 library(WGCNA)
 library(matrixStats)
 library("sva")
@@ -12,7 +11,7 @@ library(SummarizedExperiment)
 i=1
 
 
-dir_figure = paste0("/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig2/")
+dir_figure = paste0("/corplot_adj_4_svapcs/fig2/")
 load(paste0(dir_figure,"nsv_",i,"_th_tissue.RData"))
 n_PC=nsv
 
