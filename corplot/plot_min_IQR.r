@@ -1,7 +1,7 @@
-dir_fig="/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig/"
+dir_fig="/corplot_adj_4_svapcs/fig/"
 dir.create(dir_fig)
 
-dir_input="/users/ywang/10_25_2019/corplot_adj_4_svapcs/data/"
+dir_input="/corplot_adj_4_svapcs/data/"
 load(paste0(dir_input,"min_IQR.RData"))
 
 range_y=range(min_IQR$IQR_vec_ori,min_IQR$IQR_vec_adj)
