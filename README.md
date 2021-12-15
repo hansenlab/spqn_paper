@@ -47,18 +47,16 @@ scRNA: ridgeplot of scRNA-seq example data
 ### Visualize the bias in co-expression analysis before and after adjusting the correlation matrix
 exp_signal: visualize the weighted distribution of expressions of genes, with the weight decided by the number of estimated co-expression partners
 
-
 ### Examing the expression bias in 'true' co-expression network 
 PPI: visualize the weighted distribution of expressions of genes, with the weight decided by the number of interacting proteins of the corresponding protein, according to PPI database 
 
-###
-functions
-scatter_nsampple_IQR
+### Functions
+functions: functions used in the visualization, batch effect removal and correlation matrix adjustment
+
+### Exploratory analysis
+
+scatter_nsampple_IQR: scatter plot showing the change IQR of correlations with the change of the number of PCs removed from the data
+
+TF: visualize the number of predicted co-expressions among TF-related edges
 
 
-
-
-
-
-
-TF
