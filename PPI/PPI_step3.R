@@ -1,13 +1,12 @@
 library(readr)
 library(matrixStats)
 
-#original_files = "/Users/yiwang/Dropbox/project_Kasper/4_26_2019/threshold_PPI/data/dat_HURI_PPI_full.tsv"
-original_files = "/users/ywang/10_25_2019/PPI/data/dat_HURI_PPI_full.tsv"
-dir_output="/users/ywang/10_25_2019/PPI/data/"
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
+original_files = "/PPI/data/dat_HURI_PPI_full.tsv"
+dir_output="/PPI/data/"
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_evaluation_Aug_5.R")
 
-dir_data="/users/ywang/10_25_2019/data/"
+dir_data="/data/"
 
 HURI=read_tsv(original_files)
 
