@@ -65,4 +65,6 @@ TF: visualize the number of predicted co-expressions among TF-related edges
 
 drosophila: explore the mean-correlation relationship of drosophola developmental RNA-seq data
 
+VST: examine the mean-correlation relationship after applying VST on the expression data
+
 
