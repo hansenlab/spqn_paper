@@ -29,8 +29,8 @@ The curated data is available at XXX.
 
 ## Script
 
-### Adjust correlation matrix
-cor_est
+### Calculate and adjust correlation matrix
+cor_est: remove batch effect, calculate the correlation matrix using GTEx data and adjust the correlation matrix
 
 ### Visualize the mean-correlation relationship
 
