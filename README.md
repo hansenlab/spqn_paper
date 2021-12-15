@@ -36,13 +36,13 @@ cor_est
 
 corplot
 
-signal_ridge
+signal_ridge: ridgeplot showing the distribution of correlations for genes across different expression levels of GTEx data
 
-slope_min_IQR
+slope_min_IQR: scatter plot showing the relationship between the IQR of correlation and the expression level of GTEx data
 
-qqplot
+qqplot: Q-Q plot showing the distribution difference of correlations between different expression levels of GTEx data
 
-scRNA
+scRNA: ridgeplot of scRNA-seq example data
 
 ### Visualize the bias in co-expression analysis before and after adjusting the correlation matrix
 exp_signal
