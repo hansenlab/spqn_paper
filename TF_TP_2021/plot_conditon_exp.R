@@ -1,14 +1,4 @@
 
-# 
-# 1.extract the TF data
-# 2.find one tissue - 1hr
-# extract correlations of adj and ori
-# Extract trank of adj and ori  - on cluster
-# Scatter plot for ranks before/after spqn  - on cluster
-
-#library("sva")
-#library("recount", quietly = T)
-#library("WGCNA", quietly = T)
 library(matrixStats)
 library(matrixStats)
 library(WGCNA)
@@ -16,22 +6,14 @@ library(ggplot2)
 library(ggridges)
 library(SummarizedExperiment)
 library(readr)
-# library(ggplot2)
-# 
+
 library(stringr)
 
-# source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
-# source("/users/ywang/10_25_2019/functions/functions_2d_quantile_diagnal_only.R")
-# source("/users/ywang/10_25_2019/functions/functions_evaluation_Aug_5.R")
-# source("/users/ywang/10_25_2019/WGCNA/code/functions/functions_construct_modules.R")
 
-
-dir_data="/dcl01/hansen/data/meanCoexp/"
-dir_input="/users/ywang/10_25_2019/corplot_ori_svapcs/data/" # cor_est
-# dir_output="/users/ywang/10_25_2019/TF/data/"
-# dir_fig="/users/ywang/10_25_2019/TF/fig/"
-dir_fig="/users/ywang/10_25_2019/TP_Nov1_2021/fig/"
-dir_output="/users/ywang/10_25_2019/TP_Nov1_2021/fig/"
+dir_data="/data/"
+dir_input="/corplot_ori_svapcs/data/"
+dir_fig="/TP_Nov1_2021/fig/"
+dir_output="/TP_Nov1_2021/fig/"
 setwd(dir_fig)
 
 ### P
