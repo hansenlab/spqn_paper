@@ -61,4 +61,6 @@ scatter_nsampple_IQR: scatter plot showing the change IQR of correlations with t
 
 TF: visualize the number of predicted co-expressions among TF-related edges
 
+drosophila: explore the mean-correlation relationship of drosophola developmental RNA-seq data
+
 
