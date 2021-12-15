@@ -58,6 +58,9 @@ bias_regulatome: visualize the weighted distribution of expressions of genes, wi
 ### Evaluation of SpQN
 TP_Partition: compare the true positive of co-expression estimation before and after applying SpQN, conditional on the gene expression level, where co-expression signals are decided by setting a threshold on the absolute correlation, and the gene pairs corresponding to the interacting protein pairs in PPI were used as ground truth
 
+TF_TP: compare the TF-related true positive of co-expression estimation before and after applying SpQN, conditional on the gene expression level, where co-expression signals are decided by setting a threshold on the absolute correlation, and the gene pairs corresponding to the interacting protein pairs in PPI were used as ground truth
+
+
 
 ### Functions
 functions: functions used in the visualization, batch effect removal and correlation matrix adjustment
