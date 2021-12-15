@@ -1,8 +1,7 @@
 
 
-# dir_fig="/users/ywang/10_25_2019/corplot_adj_4_svapcs/fig/"
-# dir.create(dir_fig)
-dir_output="/Users/yiwang/Dropbox/project_Kasper/July_28_2020/drosophila/out/"
+
+dir_output="/drosophila/out/"
 dir_fig=dir_output
 dir_input=dir_output
 
