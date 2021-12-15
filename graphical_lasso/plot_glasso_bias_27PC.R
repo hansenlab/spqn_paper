@@ -1,5 +1,4 @@
-#library("sva")
-#library("recount", quietly = T)
+
 library(matrixStats)
 library(spqn)
 
@@ -7,13 +6,13 @@ library(spqn)
 library(matrixStats)
 library(WGCNA)
 library(SummarizedExperiment)
-source("/users/ywang/10_25_2019/functions/functions_2d_quantile_no_surf_July_18.R")
+source("/functions/functions_2d_quantile_no_surf_July_18.R")
 
-dir_data="/users/ywang/10_25_2019/data/"
-dir_output="/users/ywang/July_28_2020/graphical_lasso_morepoints/output_27pc/"
-# dir_output="/users/ywang/July_28_2020/graphical_lasso/output_27pc/"
+dir_data="/data/"
+dir_output="/graphical_lasso_morepoints/output_27pc/"
+# dir_output="/graphical_lasso/output_27pc/"
 
-dir_fig="/users/ywang/July_28_2020/graphical_lasso_morepoints/fig_27PC/"
+dir_fig="/graphical_lasso_morepoints/fig_27PC/"
 dir.create(dir_fig)
 
 lambda = c(5:20)/100*4
