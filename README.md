@@ -6,7 +6,7 @@
 
 The original data was downloaded from GTEx portal: https://gtexportal.org/home/datasets
 
-The processed data is available at XXX.
+The processed data is available at https://zenodo.org/record/5784626#.YcC7lr3MLxR.
 
 ### Drosophila bulk RNA-seq
 
@@ -25,7 +25,7 @@ The original HuRI protein-protein interaction data was downloaded from: http://w
 ### Regulatome
 The original regulatome data was curated using the code from: https://github.com/leekgroup/networks_correction/blob/master/shellscripts/get_true_positive.sh.
 
-The curated data is available at XXX.
+The curated data is available at https://zenodo.org/record/5784626#.YcC7lr3MLxR.
 
 ### TF gene list
 The transcription factor gene list was downloaded from: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4825693/bin/NIHMS772895-supplement-Table_S2.xlsx
